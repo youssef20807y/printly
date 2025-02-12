@@ -187,31 +187,21 @@
         </div>
 
         <!-- شروط طباعة الكتب -->
-<div id="bookConditions" class="hidden">
-    <label>عدد الصفحات:</label>
-    <input type="number" id="bookPages" class="border p-2 w-full mb-2">
-    
-    <label>نوع التغليف:</label>
-    <select id="bookBinding" class="border p-2 w-full mb-2" onchange="toggleWireType()">
-        <option value="بسلك">بسلك</option>
-        <option value="بشر">بشر</option>
-    </select>
-    
-    <!-- نوع السلك (يظهر فقط إذا تم اختيار "بسلك") -->
-    <div id="wireTypeSection" class="hidden">
-        <label>نوع السلك:</label>
-        <select id="wireType" class="border p-2 w-full mb-2">
-            <option value="سلك عادي">سلك عادي</option>
-            <option value="سلك مقوى">سلك مقوى</option>
-        </select>
-    </div>
-    
-    <label>نوع الطباعة:</label>
-    <select id="bookPrintType" class="border p-2 w-full mb-2">
-        <option value="ملون">ملون</option>
-        <option value="أسود وأبيض">أسود وأبيض</option>
-    </select>
-</div>
+        <div id="bookConditions" class="hidden">
+            <label>عدد الصفحات:</label>
+            <input type="number" id="bookPages" class="border p-2 w-full mb-2">
+            <label>نوع الغلاف:</label>
+            <select id="bookCover" class="border p-2 w-full mb-2">
+                <option value="غلاف عادي">غلاف عادي</option>
+                <option value="غلاف مقوى">غلاف مقوى</option>
+            </select>
+            <label>نوع الطباعة:</label>
+            <select id="bookPrintType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+        </div>
+
         <!-- شروط طباعة البوسترات -->
         <div id="posterConditions" class="hidden">
             <label>حجم البوستر:</label>
@@ -315,44 +305,7 @@
         <button onclick="closePopup()" class="bg-gray-300 px-4 py-2 rounded mt-2">إغلاق</button>
     </div>
 </div>
-<script>
-    // إظهار/إخفاء حقل "نوع السلك" بناءً على اختيار التغليف
-    function toggleWireType() {
-        let bindingType = document.getElementById('bookBinding').value;
-        let wireTypeSection = document.getElementById('wireTypeSection');
-        
-        if (bindingType === 'بسلك') {
-            wireTypeSection.classList.remove('hidden');
-        } else {
-            wireTypeSection.classList.add('hidden');
-        }
-    }
 
-    // إرسال الطلب
-    function sendOrder() {
-        let product = document.getElementById('orderTitle').innerText;
-        let message = `طلب جديد:\n${product}\n`;
-        
-        if (product.includes('كتب')) {
-            let bookPages = document.getElementById('bookPages').value;
-            let bookBinding = document.getElementById('bookBinding').value;
-            let bookPrintType = document.getElementById('bookPrintType').value;
-            
-            message += `عدد الصفحات: ${bookPages}\nنوع التغليف: ${bookBinding}\n`;
-            
-            // إذا كان التغليف "بسلك"، أضف نوع السلك
-            if (bookBinding === 'بسلك') {
-                let wireType = document.getElementById('wireType').value;
-                message += `نوع السلك: ${wireType}\n`;
-            }
-            
-            message += `نوع الطباعة: ${bookPrintType}`;
-        }
-        
-        let whatsappURL = `https://wa.me/201024485693?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, '_blank');
-    }
-</script>
 <script>
     function openPopup(productName) {
         document.getElementById('orderTitle').innerText = `طلب ${productName}`;
@@ -439,27 +392,10 @@
             message += `عدد الصفحات: ${magazinePages}\nنوع الغلاف: ${magazineCover}\nنوع الطباعة: ${magazinePrintType}`;
         }
         
-        let whatsappURL = `https://wa.me/201024485693?text=${encodeURIComponent(message)}`;
+        let whatsappURL = `https://wa.me/201002889688?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, '_blank');
     }
 </script>
-
-    <!-- Dark Mode Toggle Script -->
-    <script>
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const body = document.body;
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const icon = darkModeToggle.querySelector('i');
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        });
-    </script>
 
 </body>
 </html>
