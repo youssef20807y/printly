@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - Printly</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6f61, #ffcc00);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -3px;
+            left: 0;
+            background-color: #ffcc00;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link-home {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- الهيدر -->
+    <header class="gradient-bg text-white py-4 fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-6 relative">
+            <!-- الشعار -->
+            <div class="logo text-3xl font-extrabold tracking-wide transform hover:scale-110 transition duration-300 w-full text-center md:w-auto md:text-left">
+                <i class="fas fa-print mr-2"></i>Printly
+            </div>
+            <!-- زر القائمة الجانبية للأجهزة الصغيرة -->
+            <button id="menu-toggle" class="text-white text-2xl md:hidden absolute right-6 top-1/2 transform -translate-y-1/2">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- القائمة الرئيسية -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="index.html" class="nav-link nav-link-home text-lg font-semibold">الرئيسية</a>
+                <a href="about.html" class="nav-link text-lg font-semibold">عنا</a>
+                <a href="contact.html" class="nav-link text-lg font-semibold">كلمنا</a>
+                <a href="products.html" class="bg-white text-gray-800 px-5 py-2 rounded-full font-bold hover:bg-yellow-400 transition duration-300 shadow-md">منتجاتنا</a>
+            </nav>
+        </div>
+    </header>
+        <!-- القائمة الجانبية للأجهزة الصغيرة -->
+        <div id="sidebar" class="fixed top-0 right-0 w-64 h-full bg-white text-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+            <button id="close-menu" class="absolute top-4 left-4 text-gray-800 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav class="flex flex-col items-center mt-16 space-y-6">
+                <a href="index.html" class="text-lg font-semibold">الرئيسية</a>
+                <a href="about.html" class="text-lg font-semibold">عنا</a>
+                <a href="contact.html" class="text-lg font-semibold">كلمنا</a>
+                <a href="products.html" class="bg-yellow-400 px-5 py-2 rounded-full font-bold shadow-md">منتجاتنا</a>
+            </nav>
+        </div>
+    
+        <!-- سكريبت التحكم بالقائمة -->
+        <script>
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const closeMenu = document.getElementById('close-menu');
+    
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.remove('translate-x-full');
+            });
+    
+            closeMenu.addEventListener('click', () => {
+                sidebar.classList.add('translate-x-full');
+            });
+        </script>
+<style>
+    .gradient-bg {
+        background: linear-gradient(135deg, #ff6f61, #ffcc00);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .popup {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        width: 300px;
+    }
+</style>
+    <!-- Products Section -->
+<!-- Products Section -->
+<section id="products" class="py-16 text-center px-4">
+    <h2 class="text-4xl font-bold mb-8">منتجاتنا</h2>
+    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <!-- طباعة أوراق -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة أوراق')">
+            <i class="fas fa-print text-5xl text-yellow-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة أوراق</h3>
+        </div>
+
+        <!-- طباعة كتب -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة كتب')">
+            <i class="fas fa-book text-5xl text-blue-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة كتب</h3>
+        </div>
+
+        <!-- طباعة بوسترات -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة بوسترات')">
+            <i class="fas fa-image text-5xl text-green-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة بوسترات</h3>
+        </div>
+
+        <!-- طباعة كروت شخصية -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة كروت شخصية')">
+            <i class="fas fa-id-card text-5xl text-purple-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة كروت شخصية</h3>
+        </div>
+
+        <!-- طباعة بروشورات -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة بروشورات')">
+            <i class="fas fa-scroll text-5xl text-red-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة بروشورات</h3>
+        </div>
+
+        <!-- طباعة ملصقات -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة ملصقات')">
+            <i class="fas fa-tags text-5xl text-pink-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة ملصقات</h3>
+        </div>
+
+        <!-- طباعة فواتير -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة فواتير')">
+            <i class="fas fa-file-invoice text-5xl text-indigo-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة فواتير</h3>
+        </div>
+
+        <!-- طباعة مجلات -->
+        <div class="p-6 bg-white shadow-lg rounded-lg transform hover:scale-105 transition cursor-pointer" onclick="openPopup('طباعة مجلات')">
+            <i class="fas fa-newspaper text-5xl text-orange-500"></i>
+            <h3 class="text-xl font-semibold mt-4">طباعة مجلات</h3>
+        </div>
+    </div>
+</section>
+
+<div id="orderOverlay" class="overlay">
+    <div class="popup">
+        <h3 id="orderTitle" class="text-xl font-bold mb-4"></h3>
+        
+        <!-- شروط طباعة الأوراق -->
+        <div id="paperConditions" class="hidden">
+            <label>عدد الأوراق:</label>
+            <input type="number" id="paperCount" class="border p-2 w-full mb-2">
+            <label>وجه وظهر:</label>
+            <select id="paperSide" class="border p-2 w-full mb-2">
+                <option value="وجه واحد">وجه واحد</option>
+                <option value="وجه وظهر">وجه وظهر</option>
+            </select>
+            <label>عدد الجرام:</label>
+            <input type="number" id="paperGrams" class="border p-2 w-full mb-2">
+            <label>نوع الطباعة:</label>
+            <select id="printType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+        </div>
+
+        <!-- شروط طباعة الكتب -->
+<div id="bookConditions" class="hidden">
+    <label>عدد الصفحات:</label>
+    <input type="number" id="bookPages" class="border p-2 w-full mb-2">
+    
+    <label>نوع التغليف:</label>
+    <select id="bookBinding" class="border p-2 w-full mb-2" onchange="toggleWireType()">
+        <option value="بسلك">بسلك</option>
+        <option value="بشر">بشر</option>
+    </select>
+    
+    <!-- نوع السلك (يظهر فقط إذا تم اختيار "بسلك") -->
+    <div id="wireTypeSection" class="hidden">
+        <label>نوع السلك:</label>
+        <select id="wireType" class="border p-2 w-full mb-2">
+            <option value="سلك عادي">سلك عادي</option>
+            <option value="سلك مقوى">سلك مقوى</option>
+        </select>
+    </div>
+    
+    <label>نوع الطباعة:</label>
+    <select id="bookPrintType" class="border p-2 w-full mb-2">
+        <option value="ملون">ملون</option>
+        <option value="أسود وأبيض">أسود وأبيض</option>
+    </select>
+</div>
+        <!-- شروط طباعة البوسترات -->
+        <div id="posterConditions" class="hidden">
+            <label>حجم البوستر:</label>
+            <select id="posterSize" class="border p-2 w-full mb-2">
+                <option value="A4">A4</option>
+                <option value="A3">A3</option>
+                <option value="A2">A2</option>
+            </select>
+            <label>نوع الطباعة:</label>
+            <select id="posterPrintType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+            <label>عدد البوسترات:</label>
+            <input type="number" id="posterCount" class="border p-2 w-full mb-2">
+        </div>
+
+        <!-- شروط طباعة كروت شخصية -->
+        <div id="businessCardConditions" class="hidden">
+            <label>عدد الكروت:</label>
+            <input type="number" id="cardCount" class="border p-2 w-full mb-2">
+            <label>نوع الطباعة:</label>
+            <select id="cardPrintType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+            <label>نوع الورق:</label>
+            <select id="cardPaperType" class="border p-2 w-full mb-2">
+                <option value="ورق عادي">ورق عادي</option>
+                <option value="ورق لامع">ورق لامع</option>
+            </select>
+        </div>
+
+        <!-- شروط طباعة بروشورات -->
+        <div id="brochureConditions" class="hidden">
+            <label>عدد البروشورات:</label>
+            <input type="number" id="brochureCount" class="border p-2 w-full mb-2">
+            <label>عدد الطويات:</label>
+            <select id="brochureFolds" class="border p-2 w-full mb-2">
+                <option value="بدون طيات">بدون طيات</option>
+                <option value="طية واحدة">طية واحدة</option>
+                <option value="طيتين">طيتين</option>
+            </select>
+            <label>نوع الطباعة:</label>
+            <select id="brochurePrintType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+        </div>
+
+        <!-- شروط طباعة ملصقات -->
+        <div id="stickerConditions" class="hidden">
+            <label>عدد الملصقات:</label>
+            <input type="number" id="stickerCount" class="border p-2 w-full mb-2">
+            <label>حجم الملصق:</label>
+            <select id="stickerSize" class="border p-2 w-full mb-2">
+                <option value="صغير">صغير</option>
+                <option value="متوسط">متوسط</option>
+                <option value="كبير">كبير</option>
+            </select>
+            <label>نوع الطباعة:</label>
+            <select id="stickerPrintType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+        </div>
+
+        <!-- شروط طباعة فواتير -->
+        <div id="invoiceConditions" class="hidden">
+            <label>عدد الفواتير:</label>
+            <input type="number" id="invoiceCount" class="border p-2 w-full mb-2">
+            <label>نوع الطباعة:</label>
+            <select id="invoicePrintType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+            <label>نوع الورق:</label>
+            <select id="invoicePaperType" class="border p-2 w-full mb-2">
+                <option value="ورق عادي">ورق عادي</option>
+                <option value="ورق حراري">ورق حراري</option>
+            </select>
+        </div>
+
+        <!-- شروط طباعة مجلات -->
+        <div id="magazineConditions" class="hidden">
+            <label>عدد الصفحات:</label>
+            <input type="number" id="magazinePages" class="border p-2 w-full mb-2">
+            <label>نوع الغلاف:</label>
+            <select id="magazineCover" class="border p-2 w-full mb-2">
+                <option value="غلاف عادي">غلاف عادي</option>
+                <option value="غلاف مقوى">غلاف مقوى</option>
+            </select>
+            <label>نوع الطباعة:</label>
+            <select id="magazinePrintType" class="border p-2 w-full mb-2">
+                <option value="ملون">ملون</option>
+                <option value="أسود وأبيض">أسود وأبيض</option>
+            </select>
+        </div>
+
+        <button onclick="sendOrder()" class="bg-yellow-400 text-white px-4 py-2 rounded">إرسال الطلب</button>
+        <button onclick="closePopup()" class="bg-gray-300 px-4 py-2 rounded mt-2">إغلاق</button>
+    </div>
+</div>
+<script>
+    // إظهار/إخفاء حقل "نوع السلك" بناءً على اختيار التغليف
+    function toggleWireType() {
+        let bindingType = document.getElementById('bookBinding').value;
+        let wireTypeSection = document.getElementById('wireTypeSection');
+        
+        if (bindingType === 'بسلك') {
+            wireTypeSection.classList.remove('hidden');
+        } else {
+            wireTypeSection.classList.add('hidden');
+        }
+    }
+
+    // إرسال الطلب
+    function sendOrder() {
+        let product = document.getElementById('orderTitle').innerText;
+        let message = `طلب جديد:\n${product}\n`;
+        
+        if (product.includes('كتب')) {
+            let bookPages = document.getElementById('bookPages').value;
+            let bookBinding = document.getElementById('bookBinding').value;
+            let bookPrintType = document.getElementById('bookPrintType').value;
+            
+            message += `عدد الصفحات: ${bookPages}\nنوع التغليف: ${bookBinding}\n`;
+            
+            // إذا كان التغليف "بسلك"، أضف نوع السلك
+            if (bookBinding === 'بسلك') {
+                let wireType = document.getElementById('wireType').value;
+                message += `نوع السلك: ${wireType}\n`;
+            }
+            
+            message += `نوع الطباعة: ${bookPrintType}`;
+        }
+        
+        let whatsappURL = `https://wa.me/201024485693?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+    }
+</script>
+<script>
+    function openPopup(productName) {
+        document.getElementById('orderTitle').innerText = `طلب ${productName}`;
+        document.getElementById('orderOverlay').style.display = 'flex';
+        
+        // إخفاء جميع الشروط
+        document.getElementById('paperConditions').classList.add('hidden');
+        document.getElementById('bookConditions').classList.add('hidden');
+        document.getElementById('posterConditions').classList.add('hidden');
+        document.getElementById('businessCardConditions').classList.add('hidden');
+        document.getElementById('brochureConditions').classList.add('hidden');
+        document.getElementById('stickerConditions').classList.add('hidden');
+        document.getElementById('invoiceConditions').classList.add('hidden');
+        document.getElementById('magazineConditions').classList.add('hidden');
+        
+        // إظهار الشروط المناسبة للمنتج
+        if (productName === 'طباعة أوراق') {
+            document.getElementById('paperConditions').classList.remove('hidden');
+        } else if (productName === 'طباعة كتب') {
+            document.getElementById('bookConditions').classList.remove('hidden');
+        } else if (productName === 'طباعة بوسترات') {
+            document.getElementById('posterConditions').classList.remove('hidden');
+        } else if (productName === 'طباعة كروت شخصية') {
+            document.getElementById('businessCardConditions').classList.remove('hidden');
+        } else if (productName === 'طباعة بروشورات') {
+            document.getElementById('brochureConditions').classList.remove('hidden');
+        } else if (productName === 'طباعة ملصقات') {
+            document.getElementById('stickerConditions').classList.remove('hidden');
+        } else if (productName === 'طباعة فواتير') {
+            document.getElementById('invoiceConditions').classList.remove('hidden');
+        } else if (productName === 'طباعة مجلات') {
+            document.getElementById('magazineConditions').classList.remove('hidden');
+        }
+    }
+    
+    function closePopup() {
+        document.getElementById('orderOverlay').style.display = 'none';
+    }
+    
+    function sendOrder() {
+        let product = document.getElementById('orderTitle').innerText;
+        let message = `طلب جديد:\n${product}\n`;
+        
+        if (product.includes('أوراق')) {
+            let paperCount = document.getElementById('paperCount').value;
+            let paperSide = document.getElementById('paperSide').value;
+            let paperGrams = document.getElementById('paperGrams').value;
+            let printType = document.getElementById('printType').value;
+            message += `عدد الأوراق: ${paperCount}\nالوجه: ${paperSide}\nعدد الجرام: ${paperGrams}\nنوع الطباعة: ${printType}`;
+        } else if (product.includes('كتب')) {
+            let bookPages = document.getElementById('bookPages').value;
+            let bookCover = document.getElementById('bookCover').value;
+            let bookPrintType = document.getElementById('bookPrintType').value;
+            message += `عدد الصفحات: ${bookPages}\nنوع الغلاف: ${bookCover}\nنوع الطباعة: ${bookPrintType}`;
+        } else if (product.includes('بوسترات')) {
+            let posterSize = document.getElementById('posterSize').value;
+            let posterPrintType = document.getElementById('posterPrintType').value;
+            let posterCount = document.getElementById('posterCount').value;
+            message += `حجم البوستر: ${posterSize}\nنوع الطباعة: ${posterPrintType}\nعدد البوسترات: ${posterCount}`;
+        } else if (product.includes('كروت شخصية')) {
+            let cardCount = document.getElementById('cardCount').value;
+            let cardPrintType = document.getElementById('cardPrintType').value;
+            let cardPaperType = document.getElementById('cardPaperType').value;
+            message += `عدد الكروت: ${cardCount}\nنوع الطباعة: ${cardPrintType}\nنوع الورق: ${cardPaperType}`;
+        } else if (product.includes('بروشورات')) {
+            let brochureCount = document.getElementById('brochureCount').value;
+            let brochureFolds = document.getElementById('brochureFolds').value;
+            let brochurePrintType = document.getElementById('brochurePrintType').value;
+            message += `عدد البروشورات: ${brochureCount}\nعدد الطويات: ${brochureFolds}\nنوع الطباعة: ${brochurePrintType}`;
+        } else if (product.includes('ملصقات')) {
+            let stickerCount = document.getElementById('stickerCount').value;
+            let stickerSize = document.getElementById('stickerSize').value;
+            let stickerPrintType = document.getElementById('stickerPrintType').value;
+            message += `عدد الملصقات: ${stickerCount}\nحجم الملصق: ${stickerSize}\nنوع الطباعة: ${stickerPrintType}`;
+        } else if (product.includes('فواتير')) {
+            let invoiceCount = document.getElementById('invoiceCount').value;
+            let invoicePrintType = document.getElementById('invoicePrintType').value;
+            let invoicePaperType = document.getElementById('invoicePaperType').value;
+            message += `عدد الفواتير: ${invoiceCount}\nنوع الطباعة: ${invoicePrintType}\nنوع الورق: ${invoicePaperType}`;
+        } else if (product.includes('مجلات')) {
+            let magazinePages = document.getElementById('magazinePages').value;
+            let magazineCover = document.getElementById('magazineCover').value;
+            let magazinePrintType = document.getElementById('magazinePrintType').value;
+            message += `عدد الصفحات: ${magazinePages}\nنوع الغلاف: ${magazineCover}\nنوع الطباعة: ${magazinePrintType}`;
+        }
+        
+        let whatsappURL = `https://wa.me/201024485693?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+    }
+</script>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+
+</body>
+</html>

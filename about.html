@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - Printly</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6f61, #ffcc00);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -3px;
+            left: 0;
+            background-color: #ffcc00;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link-home {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- الهيدر -->
+    <header class="gradient-bg text-white py-4 fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-6 relative">
+            <!-- الشعار -->
+            <div class="logo text-3xl font-extrabold tracking-wide transform hover:scale-110 transition duration-300 w-full text-center md:w-auto md:text-left">
+                <i class="fas fa-print mr-2"></i>Printly
+            </div>
+            <!-- زر القائمة الجانبية للأجهزة الصغيرة -->
+            <button id="menu-toggle" class="text-white text-2xl md:hidden absolute right-6 top-1/2 transform -translate-y-1/2">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- القائمة الرئيسية -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="index.html" class="nav-link nav-link-home text-lg font-semibold">الرئيسية</a>
+                <a href="about.html" class="nav-link text-lg font-semibold">عنا</a>
+                <a href="contact.html" class="nav-link text-lg font-semibold">كلمنا</a>
+                <a href="products.html" class="bg-white text-gray-800 px-5 py-2 rounded-full font-bold hover:bg-yellow-400 transition duration-300 shadow-md">منتجاتنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- القائمة الجانبية للأجهزة الصغيرة -->
+    <div id="sidebar" class="fixed top-0 right-0 w-64 h-full bg-white text-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <button id="close-menu" class="absolute top-4 left-4 text-gray-800 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="flex flex-col items-center mt-16 space-y-6">
+            <a href="index.html" class="text-lg font-semibold">الرئيسية</a>
+            <a href="about.html" class="text-lg font-semibold">عنا</a>
+            <a href="contact.html" class="text-lg font-semibold">كلمنا</a>
+            <a href="products.html" class="bg-yellow-400 px-5 py-2 rounded-full font-bold shadow-md">منتجاتنا</a>
+        </nav>
+    </div>
+
+    <!-- سكريبت التحكم بالقائمة -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.remove('translate-x-full');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+        });
+    </script>
+
+</body>
+</html>
+
+    <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عنّا - Printly</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white">
+
+    <!-- عنّا Section -->
+    <section id="about" class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">عنّا</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- من نحن -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-lg shadow-lg">
+                    <h4 class="text-2xl font-bold mb-6 text-yellow-500">من نحن؟</h4>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        في <span class="font-bold text-yellow-500">Printly</span>، نقدم خدمات طباعة عالية الجودة تلبي جميع احتياجاتك. سواء كنت تبحث عن طباعة المستندات، الصور، أو حتى المواد التسويقية، نحن هنا لنساعدك في تحقيق أهدافك.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        نفتخر بتقديم خدمات سريعة وموثوقة، مع الحفاظ على أعلى معايير الجودة. فريقنا من المحترفين يعمل بجد لتلبية توقعاتك وتقديم أفضل تجربة ممكنة.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li class="mb-2">طباعة سريعة ودقيقة.</li>
+                        <li class="mb-2">أحدث التقنيات في مجال الطباعة.</li>
+                        <li class="mb-2">خدمة عملاء على مدار الساعة.</li>
+                    </ul>
+                </div>
+
+                <!-- رؤيتنا -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6 text-yellow-500">رؤيتنا</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        نهدف في <span class="font-bold text-yellow-500">Printly</span> إلى أن نكون الوجهة الأولى لكل ما يتعلق بالطباعة، من خلال تقديم خدمات مبتكرة وعالية الجودة تلبي احتياجات العملاء في جميع أنحاء العالم.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        نؤمن بأن الجودة والسرعة والخدمة الممتازة هي المفاتيح لتحقيق النجاح، ونسعى جاهدين لتوفير هذه القيم في كل ما نقدمه.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li class="mb-2">توفير حلول طباعية متكاملة.</li>
+                        <li class="mb-2">تحقيق رضا العملاء من خلال الجودة.</li>
+                        <li class="mb-2">الابتكار في خدمات الطباعة.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- كلمنا Section -->
+    <section id="contact" class="py-16 bg-gray-900 text-white text-center">
+        <h2 class="text-4xl font-bold mb-8">تواصل معنا</h2>
+        <p class="text-gray-300 mb-6">هل لديك استفسار؟ راسلنا الآن.</p>
+        <a href="mailto:info@printly.com" class="bg-yellow-500 px-6 py-3 rounded-full text-lg font-bold btn-hover">راسلنا الآن</a>
+    </section>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+
+</body>
+</html>

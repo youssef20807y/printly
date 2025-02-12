@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - Printly</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6f61, #ffcc00);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -3px;
+            left: 0;
+            background-color: #ffcc00;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link-home {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- الهيدر -->
+    <header class="gradient-bg text-white py-4 fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-6 relative">
+            <!-- الشعار -->
+            <div class="logo text-3xl font-extrabold tracking-wide transform hover:scale-110 transition duration-300 w-full text-center md:w-auto md:text-left">
+                <i class="fas fa-print mr-2"></i>Printly
+            </div>
+            <!-- زر القائمة الجانبية للأجهزة الصغيرة -->
+            <button id="menu-toggle" class="text-white text-2xl md:hidden absolute right-6 top-1/2 transform -translate-y-1/2">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- القائمة الرئيسية -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="index.html" class="nav-link nav-link-home text-lg font-semibold">الرئيسية</a>
+                <a href="about.html" class="nav-link text-lg font-semibold">عنا</a>
+                <a href="contact.html" class="nav-link text-lg font-semibold">كلمنا</a>
+                <a href="products.html" class="bg-white text-gray-800 px-5 py-2 rounded-full font-bold hover:bg-yellow-400 transition duration-300 shadow-md">منتجاتنا</a>
+            </nav>
+        </div>
+    </header>
+    
+    
+
+    <!-- القائمة الجانبية للأجهزة الصغيرة -->
+    <div id="sidebar" class="fixed top-0 right-0 w-64 h-full bg-white text-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <button id="close-menu" class="absolute top-4 left-4 text-gray-800 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="flex flex-col items-center mt-16 space-y-6">
+            <a href="index.html" class="text-lg font-semibold">الرئيسية</a>
+            <a href="about.html" class="text-lg font-semibold">عنا</a>
+            <a href="contact.html" class="text-lg font-semibold">كلمنا</a>
+            <a href="products.html" class="bg-yellow-400 px-5 py-2 rounded-full font-bold shadow-md">منتجاتنا</a>
+        </nav>
+    </div>
+
+    <!-- سكريبت التحكم بالقائمة -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.remove('translate-x-full');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+        });
+    </script>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - Printly</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+            background: #fafafa;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 204, 0, 0.5);
+            border-radius: 50%;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 1;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #ff6f61, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleReveal 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        @keyframes titleReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .feature-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.4s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    color: #222; /* لون النص الأسود الداكن */
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 70%);
+    transform: rotate(25deg);
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+    transform: rotate(0deg) scale(1.2);
+}
+
+.feature-card p, .feature-card h1, .feature-card h2, .feature-card h3 {
+    color: #111; /* يجعل النص أسود غامق */
+}
+
+
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ff6f61, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(45deg, #ff6f61, #ffcc00);
+            border-radius: 50px;
+            color: #1a1a1a;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ffcc00, #ff6f61);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-section {
+            background: #ffffff;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6f61, #ffcc00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-30px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+        }
+
+        .quality-section {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            padding: 6rem 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .quality-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .quality-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6f61, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- القسم الرئيسي الترحيبي -->
+    <section class="hero-section flex items-center justify-center">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content text-center">
+            <h1 class="hero-title">أهلاً بك في عالم طباعة برنتلي</h1>
+            <p class="hero-subtitle">نحول رؤيتك إلى واقع مع أحدث تقنيات الطباعة وأعلى معايير الجودة</p>
+            <a href="products.html" class="cta-button">
+                <span>اكتشف خدماتنا</span>
+            </a>
+            
+        </div>
+        <div class="scroll-indicator text-white">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="feature-grid">
+        <div class="feature-card">
+            <i class="fas fa-print feature-icon"></i>
+            <h3 class="feature-title">طباعة عالية الدقة</h3>
+            <p class="feature-description">نستخدم أحدث التقنيات لضمان جودة طباعة استثنائية تجعل مطبوعاتك تتألق</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-star feature-icon"></i>
+            <h3 class="feature-title">مواد فاخرة</h3>
+            <p class="feature-description">نختار أفضل الخامات لنضمن لك منتجات تدوم طويلاً وتعكس جودة عملك</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-bolt feature-icon"></i>
+            <h3 class="feature-title">سرعة التنفيذ</h3>
+            <p class="feature-description">نقدم خدمات سريعة وفعالة دون المساس بالجودة التي تستحقها</p>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services-section">
+        <h2 class="text-4xl font-bold text-center mb-8">خدماتنا المتميزة</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">بطاقات الأعمال</h3>
+                <p class="text-gray-600">تصميم وطباعة بطاقات أعمال احترافية تعكس هويتك التجارية</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">الكتالوجات</h3>
+                <p class="text-gray-600">طباعة كتالوجات عالية الجودة لعرض منتجاتك بأفضل شكل</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ad"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">المواد الدعائية</h3>
+                <p class="text-gray-600">تصميم وطباعة مواد دعائية مؤثرة تجذب العملاء</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الجودة -->
+    <section class="quality-section">
+        <h2 class="text-4xl font-bold text-center mb-12">التميز في الأرقام</h2>
+        <div class="quality-grid">
+            <div class="quality-item">
+                <div class="counter" data-target="934">0</div>
+                <p>عميل سعيد</p>
+            </div>
+            <div class="quality-item">
+                <div class="counter" data-target="1154">0</div>
+                <p>مشروع مكتمل</p>
+            </div>
+            <div class="quality-item">
+                <div class="counter" data-target="100">0</div>
+                <p>جائزة تميز</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // إنشاء الجسيمات المتحركة
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // تفعيل العدادات
+        // تفعيل العدادات
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // مدة الحركة بالمللي ثانية
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    counter.textContent = Math.round(current);
+
+                    if (current < target) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+            });
+        }
+
+        // تفعيل التأثيرات عند التمرير
+        function handleScroll() {
+            const elements = document.querySelectorAll('.feature-card, .service-card, .quality-item');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // تفعيل التأثير عندما يكون العنصر مرئياً
+                if (position.top <= window.innerHeight * 0.8) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+
+            // تفعيل العدادات عند الوصول لقسم الجودة
+            const qualitySection = document.querySelector('.quality-section');
+            const position = qualitySection.getBoundingClientRect();
+            
+            if (position.top <= window.innerHeight * 0.8 && !qualitySection.classList.contains('animated')) {
+                animateCounters();
+                qualitySection.classList.add('animated');
+            }
+        }
+
+        // تأثير التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // تفعيل تأثير التمرير عند تحريك الصفحة
+        window.addEventListener('scroll', handleScroll);
+
+        // تهيئة الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            
+            // إضافة تأثيرات الظهور التدريجي للعناصر
+            const elements = document.querySelectorAll('.feature-card, .service-card, .quality-item');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = 'all 0.6s ease-out';
+            });
+
+            // تفعيل تأثيرات التمرير الأولية
+            handleScroll();
+        });
+
+        // تفعيل التأثيرات التفاعلية للأزرار
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                button.style.setProperty('--x', `${x}px`);
+                button.style.setProperty('--y', `${y}px`);
+            });
+        });
+
+        // تأثير الماوس المتحرك
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(particle => {
+                const speed = particle.style.getPropertyValue('--speed') || Math.random() * 0.5;
+                const x = (e.clientX * speed) / 100;
+                const y = (e.clientY * speed) / 100;
+                
+                particle.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // تفعيل تأثير التحميل المتأخر للصور
+        const lazyLoad = () => {
+            const lazyImages = document.querySelectorAll('[data-src]');
+            
+            lazyImages.forEach(img => {
+                if (img.getBoundingClientRect().top <= window.innerHeight) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', lazyLoad);
+        window.addEventListener('load', lazyLoad);
+
+        // تفعيل التأثيرات المتحركة للخلفية
+        const moveBackground = (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes.forEach(shape => {
+                const speed = shape.getAttribute('data-speed');
+                const moveX = (window.innerWidth * speed) * (0.5 - x);
+                const moveY = (window.innerHeight * speed) * (0.5 - y);
+
+                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        };
+
+        document.addEventListener('mousemove', moveBackground);
+    </script>
+</body>
+</html>

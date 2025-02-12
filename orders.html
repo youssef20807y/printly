@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - Printly</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6f61, #ffcc00);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -3px;
+            left: 0;
+            background-color: #ffcc00;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link-home {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- الهيدر -->
+    <header class="gradient-bg text-white py-4 fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-6 relative">
+            <!-- الشعار -->
+            <div class="logo text-3xl font-extrabold tracking-wide transform hover:scale-110 transition duration-300 w-full text-center md:w-auto md:text-left">
+                <i class="fas fa-print mr-2"></i>Printly
+            </div>
+            <!-- زر القائمة الجانبية للأجهزة الصغيرة -->
+            <button id="menu-toggle" class="text-white text-2xl md:hidden absolute right-6 top-1/2 transform -translate-y-1/2">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- القائمة الرئيسية -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="index.html" class="nav-link nav-link-home text-lg font-semibold">الرئيسية</a>
+                <a href="products.html" class="nav-link text-lg font-semibold">منتجاتنا</a>
+                <a href="about.html" class="nav-link text-lg font-semibold">عنا</a>
+                <a href="contact.html" class="nav-link text-lg font-semibold">كلمنا</a>
+                <a href="orders.html" class="bg-white text-gray-800 px-5 py-2 rounded-full font-bold hover:bg-yellow-400 transition duration-300 shadow-md">طلباتي</a>
+            </nav>
+        </div>
+    </header>
+    
+    
+
+    <!-- القائمة الجانبية للأجهزة الصغيرة -->
+    <div id="sidebar" class="fixed top-0 right-0 w-64 h-full bg-white text-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <button id="close-menu" class="absolute top-4 left-4 text-gray-800 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="flex flex-col items-center mt-16 space-y-6">
+            <a href="index.html" class="text-lg font-semibold">الرئيسية</a>
+            <a href="about.html" class="text-lg font-semibold">عنا</a>
+            <a href="contact.html" class="text-lg font-semibold">كلمنا</a>
+            <a href="products.html" class="bg-yellow-400 px-5 py-2 rounded-full font-bold shadow-md">منتجاتنا</a>
+        </nav>
+    </div>
+
+    <!-- سكريبت التحكم بالقائمة -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.remove('translate-x-full');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sidebar.classList.add('translate-x-full');
+        });
+    </script>
+
+</body>
+</html>
+
+
+    <!-- طلباتي Section -->
+    <section id="orders" class="py-16 text-center">
+        <h2 class="text-4xl font-bold mb-8">طلباتي</h2>
+        <p class="text-gray-600 text-xl">هنا يمكنك متابعة جميع طلباتك السابقة. سجل الدخول لمتابعة الطلبات الخاصة بك.</p>
+        <a href="login.html" class="bg-yellow-500 px-6 py-3 rounded-full text-lg font-bold btn-hover">تسجيل الدخول</a>
+    </section>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+
+</body>
+</html>
